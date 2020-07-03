@@ -30,8 +30,9 @@ export class AddTaskPage implements OnInit {
       description:this.task_desc,
       timeRange:this.task_timeRange,
       date: new Date (this.task_date),
+      status:"incomplete",
       //owner:this.task_owner,
-      created:firebase.firestore.FieldValue.serverTimestamp()
+      created: firebase.firestore.FieldValue.serverTimestamp()
     }).then((docRef) =>
     {
       this.toastCtrl.create({

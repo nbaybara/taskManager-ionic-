@@ -9,8 +9,12 @@ import *as firebase from 'firebase';
 })
 export class TasksTodoPage implements OnInit {
 
+  userId : string;
+  tasks :any[] = [];
+
   constructor(private toastCtrl: ToastController, private navCtrl : NavController,) { 
        // this.task_owner =firebase.auth().currentUser.uid;
+       this.getTasks();
 
   }
 
@@ -18,9 +22,35 @@ export class TasksTodoPage implements OnInit {
   ngOnInit() {
   }
 
+  getTasks(){
+    firebase.firestore().collection("tasks").where("status","==","incomplete")
+    .onSnapshot((querySnapshot)=>{
+      this.tasks=querySnapshot.docs;
+    });
+    //.get();
+    //.where("owner","==",this.userId)
+    
+  }
+ 
   gotoAddTask(){
-    this.navCtrl.navigateBack('/addtask')
+    this.navCtrl.navigateBack(['/addtask']);
 
   }
+  markCompleted(document :firebase.firestore.QueryDocumentSnapshot)
+  {
+    firebase.firestore().collection("tasks").doc(document.id).set({
+      "status":"completed"
+    },{
+      merge:true
+    }).then(()=>{
+      this.toastCtrl.create({
+        message:"Task item marked as completed!",
+        duration:2000
+      }).then((toast) => {
+        toast.present();
+      })
+    })
+  }
+    
 
 }
