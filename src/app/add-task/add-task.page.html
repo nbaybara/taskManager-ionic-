@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title >Add New Task</ion-title>
+    <ion-back-button color="light"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+      <ion-list>
+        
+        <ion-item>
+        <ion-label position="stacked"> Task Title</ion-label>
+        <ion-input type="text" [(ngModel)]="task_title"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+        <ion-label position="stacked"> Task Description</ion-label>
+        <ion-input type="text" [(ngModel)]="task_desc"></ion-input>
+        </ion-item>
+        
+         <ion-item>
+          <ion-label position="stacked" optinal>Specify Date</ion-label>
+          <ion-datetime min="2020" display-format="MM/DD/YY" [(ngModel)]="task_date"></ion-datetime>
+          </ion-item> 
+          
+          <ion-item>
+            <ion-label position="stacked">Should Done in 1 </ion-label>
+        
+            <ion-select multiple="false"  [(ngModel)]="task_timeRange">
+            <ion-select-option value="Month">Month</ion-select-option>
+            <ion-select-option value="Week">Week</ion-select-option>
+            <ion-select-option checked="true" value="Day">Day</ion-select-option>
+            </ion-select>
+            </ion-item>
+          
+      </ion-list>
+      
+      <ion-button expand="full" shape="round" color="danger" (click)="addTask()">Add Task</ion-button>
+      
+    
+</ion-content>

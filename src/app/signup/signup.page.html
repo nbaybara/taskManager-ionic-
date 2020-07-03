@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-back-button color="light"></ion-back-button>
+    <ion-title class="space">Create an acccount?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item class="space">
+      <h1 class="center-loc">Task Manager App</h1>
+    </ion-item>
+
+  </ion-list>
+ 
+    <ion-item lines="full">
+      <ion-label position="stacked" >Email</ion-label>
+      <ion-input type="text" required placeholder="Enter your e-mail"
+      [{ngModel}]="email" ></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="stacked" >Password</ion-label>
+      <ion-input type="password" required placeholder="Enter password"[{ngModel}]="password"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" shape="round" (click)="signup()">Create Account.</ion-button>
+      </ion-col>
+    </ion-row>
+  
+  <ion-button fill="clear" color="danger" expand="block" href ="/login">Already have an account? Login here!</ion-button>
+
+</ion-content>
