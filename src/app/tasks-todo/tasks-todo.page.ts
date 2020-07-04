@@ -11,12 +11,25 @@ export class TasksTodoPage implements OnInit {
 
   userId : string;
   tasks :any[] = [];
+  public showDetails: boolean = false;
+  public showDetailWeek: boolean = false;
+  public showDetailMonth: boolean = false;
+
 
   constructor(private toastCtrl: ToastController, private navCtrl : NavController,) { 
        // this.task_owner =firebase.auth().currentUser.uid;
        this.getTasks();
 
   }
+  toggleDetails() {
+    this.showDetails = !this.showDetails;
+ }
+ toggleDetailsMonth() {
+  this.showDetailMonth = !this.showDetailMonth;
+}
+toggleDetailsWeek() {
+  this.showDetailWeek = !this.showDetailWeek;
+}
 
 
   ngOnInit() {

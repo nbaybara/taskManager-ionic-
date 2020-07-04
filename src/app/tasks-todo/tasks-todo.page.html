@@ -5,42 +5,106 @@
       <ion-button fill="clear" slot="icon-only">
         <ion-icon name="log-out" (click)="logout()"></ion-icon>
       </ion-button>
+      <ion-button horizantal="end" vertical="bottom" color="light" slot="" (click)="gotoAddTask()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button >
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
-  
-
   <ion-list>
-    <ion-item-sliding *ngFor="let task of tasks ; let i=index">
-      <ion-item>
-        <ion-label>
-          <h2>{{task.data().title}}</h2>
-          <h3>{{task.data().desc}}</h3>
-          <p *ngIf="task.data().timeRange == 'Month'">{{task.data().timeRange}}</p>
-          <p *ngIf="task.data().date" >{{task.data().date}}</p>
-        </ion-label>
-          <ion-fab-button clear color="secondary" slot="end" (click)="deleteTask(i)">
-            <ion-icon name="trash"></ion-icon>
-          </ion-fab-button>
-          <!-- <ion-fab-button clear color="secondary" slot="end">
-            <ion-icon name="create"></ion-icon>
-          </ion-fab-button> -->    
-         
-      </ion-item>
-
-      <ion-item-options side="end">
-        <ion-item-option color="secondary" (click)="markCompleted(task)">
-          <ion-icon name="checkmark"></ion-icon>
-        </ion-item-option>
-    </ion-item-options>
-    </ion-item-sliding>
+    <ion-card-header type="button">
+      <ion-button size="small"  (click)="toggleDetails()">Daily Tasks<ion-icon name="arrow-down"></ion-icon></ion-button> 
+          <ion-item-sliding *ngFor="let task of tasks ; let i=index">  
+            <ion-item *ngIf="showDetails">
+              <ion-item *ngIf='task.data().timeRange =="Day"'>  
+                <ion-label>
+                  <h2>{{task.data().title}}</h2>
+                  <h3>{{task.data().description}}</h3>
+                  <p >{{task.data().timeRange}}</p>
+                  <p *ngIf="task.data().date" >{{task.data().date}}</p>          
+                </ion-label>
+                  <ion-fab-button clear color="secondary" slot="end" (click)="deleteTask(i)">
+                  <ion-icon name="trash"></ion-icon>
+                  </ion-fab-button>
+                  <!-- <ion-fab-button clear color="secondary" slot="end">
+                    <ion-icon name="create"></ion-icon>
+                  </ion-fab-button> -->  
+                <ion-item-options side="end">
+                  <ion-item-option color="secondary" (click)="markCompleted(task)">
+                    <ion-icon name="checkmark"></ion-icon>
+                  </ion-item-option>
+              </ion-item-options>
+        </ion-item>
+        </ion-item>
+        </ion-item-sliding>
+        
+    </ion-card-header>
+    <ion-card-header type="button">
+      <ion-button size="small"  (click)="toggleDetailsWeek()">Weekly Tasks<ion-icon name="arrow-down"></ion-icon></ion-button> 
+          <ion-item-sliding *ngFor="let task of tasks ; let i=index">  
+            <ion-item *ngIf="showDetailWeek">
+              <ion-item *ngIf='task.data().timeRange =="Week"'>  
+                <ion-label>
+                  <h2>{{task.data().title}}</h2>
+                  <h3>{{task.data().description}}</h3>
+                  <p >{{task.data().timeRange}}</p>
+                  <p *ngIf="task.data().date" >{{task.data().date}}</p>          
+                </ion-label>
+                  <ion-fab-button clear color="secondary" slot="end" (click)="deleteTask(i)">
+                  <ion-icon name="trash"></ion-icon>
+                  </ion-fab-button>
+                  <!-- <ion-fab-button clear color="secondary" slot="end">
+                    <ion-icon name="create"></ion-icon>
+                  </ion-fab-button> -->  
+                <ion-item-options side="end">
+                  <ion-item-option color="secondary" (click)="markCompleted(task)">
+                    <ion-icon name="checkmark"></ion-icon>
+                  </ion-item-option>
+              </ion-item-options>
+        </ion-item>
+        </ion-item>
+        </ion-item-sliding>
+        
+    </ion-card-header>
+    <ion-card-header type="button">
+      <ion-button size="small"  (click)="toggleDetailsMonth()">Monthly Tasks<ion-icon name="arrow-down"></ion-icon></ion-button>  
+          <ion-item-sliding *ngFor="let task of tasks ; let i=index">  
+            <ion-item *ngIf="showDetailMonth">
+              <ion-item *ngIf='task.data().timeRange =="Month"'>  
+                <ion-label>
+                  <h2>{{task.data().title}}</h2>
+                  <h3>{{task.data().description}}</h3>
+                  <p >{{task.data().timeRange}}</p>
+                  <p *ngIf="task.data().date" >{{task.data().date}}</p>          
+                </ion-label>
+                  <ion-fab-button clear color="secondary" slot="end" (click)="deleteTask(i)">
+                  <ion-icon name="trash"></ion-icon>
+                  </ion-fab-button>
+                  <!-- <ion-fab-button clear color="secondary" slot="end">
+                    <ion-icon name="create"></ion-icon>
+                  </ion-fab-button> -->  
+                <ion-item-options side="end">
+                  <ion-item-option color="secondary" (click)="markCompleted(task)">
+                    <ion-icon name="checkmark"></ion-icon>
+                  </ion-item-option>
+              </ion-item-options>
+        </ion-item>
+        </ion-item>
+        </ion-item-sliding>
+        
+    </ion-card-header>
+    
+    
+    
   </ion-list>
-  <ion-content>
-  <ion-fab-button horizantal="end" vertical="bottom" color="danger"slot="fixed" (click)="gotoAddTask()">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button >
+  
 </ion-content>
+
+
  
-</ion-content>
+
+
+
