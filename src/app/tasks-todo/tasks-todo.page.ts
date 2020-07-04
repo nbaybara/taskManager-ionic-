@@ -36,6 +36,11 @@ export class TasksTodoPage implements OnInit {
     this.navCtrl.navigateBack(['/addtask']);
 
   }
+  deleteTask(index){
+    //firebase.firestore().collection("tasks").doc(index).delete();
+    this.tasks.splice(index, 1);
+   
+  }
   markCompleted(document :firebase.firestore.QueryDocumentSnapshot)
   {
     firebase.firestore().collection("tasks").doc(document.id).set({
@@ -50,6 +55,14 @@ export class TasksTodoPage implements OnInit {
         toast.present();
       })
     })
+  }
+  logout(){
+    firebase.auth().signOut().then(() =>{
+      this.navCtrl.navigateRoot("/login");
+    }).catch((err) => {
+        console.log(err)
+      })
+  
   }
     
 

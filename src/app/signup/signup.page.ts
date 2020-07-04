@@ -37,6 +37,7 @@ export class SignupPage implements OnInit {
   }
 
   goLogin(){
+    this.navCtrl.navigateRoot('/login');
   }
   
 }

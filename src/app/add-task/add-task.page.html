@@ -32,7 +32,14 @@
             <ion-select-option checked="true" value="Day">Day</ion-select-option>
             </ion-select>
             </ion-item>
-          
+          <ion-content padding>
+              <ion-item>
+                <ion-input type="text" placeholder="Enter task" [(ngModel)]="taskName"></ion-input>
+                <div class="item-note" item-end>
+                  <button ion-button>Add Task</button>
+                </div>
+              </ion-item>
+            </ion-content>
       </ion-list>
       
       <ion-button expand="full" shape="round" color="danger" (click)="addTask()">Add Task</ion-button>

@@ -1,20 +1,33 @@
 <ion-header>
   <ion-toolbar color="danger">
     <ion-title>Your Tasks</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" slot="icon-only">
+        <ion-icon name="log-out" (click)="logout()"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  
 
   <ion-list>
-    <ion-item-sliding *ngFor="let task of tasks">
+    <ion-item-sliding *ngFor="let task of tasks ; let i=index">
       <ion-item>
         <ion-label>
           <h2>{{task.data().title}}</h2>
           <h3>{{task.data().desc}}</h3>
-           <p *ngIf="task.data().timeRange == 'Month'">{{task.data().timeRange}}</p>
+          <p *ngIf="task.data().timeRange == 'Month'">{{task.data().timeRange}}</p>
           <p *ngIf="task.data().date" >{{task.data().date}}</p>
         </ion-label>
+          <ion-fab-button clear color="secondary" slot="end" (click)="deleteTask(i)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
+          <!-- <ion-fab-button clear color="secondary" slot="end">
+            <ion-icon name="create"></ion-icon>
+          </ion-fab-button> -->    
+         
       </ion-item>
 
       <ion-item-options side="end">
@@ -22,14 +35,12 @@
           <ion-icon name="checkmark"></ion-icon>
         </ion-item-option>
     </ion-item-options>
-    
     </ion-item-sliding>
   </ion-list>
+  <ion-content>
   <ion-fab-button horizantal="end" vertical="bottom" color="danger"slot="fixed" (click)="gotoAddTask()">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button >
-
-  
-
+</ion-content>
  
 </ion-content>
